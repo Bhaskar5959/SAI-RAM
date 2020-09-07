@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+class A
+  {
+     display()
+    {
+      document.writeln("A is invoked<br>");
+    }
+  }
+class B extends A
+  {
+    display()
+    {
+      document.writeln("B is invoked");
+    }
+  }
+
+var a=[new A(), new B()]
+a.forEach(function(msg)
+{
+msg.display();
+});
+</script>
+
+</body>
+</html>
+
+ 

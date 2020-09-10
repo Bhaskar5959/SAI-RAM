@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>websockets</title>
+    </head>
+    <body>
+        <h1>websocket basic</h1>
+        <ul class="tsummary">
+            <li>allows two way connection</li>
+            <li>great for<strong>real time</strong>applications</li>
+        </ul>
+        <script>
+            const ws = new WebSocket("ws://localhost;8882");
+
+               ws.addEventListener('open', () => {
+                   console.log("we are connected!");
+               }
+        </script>
+    </body>
+</html>

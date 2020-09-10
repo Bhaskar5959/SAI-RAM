@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Handling Google suggest</title>
+        
+        <style>
+            #targetDiv{
+                background-color:rosybrown;
+                width: 40%;
+            }
+            </style>
+            <script language = "javascript">
+                function getData(dataSource)
+                {
+                    var XMLHttpRequestObject = false;
+
+                   if (window.XMLHttpRequest){
+                       XMLHttpRequestObject = new XMLHttpRequest();
+                   } else if(window.ActiveXObject){
+                       XMLHttpRequestObject = new ActiveXObject("Microsoft.XMLHTTP");
+                   }
+                   if (XMLHttpRequestObject){
+                       XMLHttpRequestObject.open("GET",dataSource);
+
+                       XMLHttpRequestObject.onreadystatechange =function()
+                       {
+                           if (XMLHttpRequestObject.readystate == 4 &&
+                           XMLHttpRequestObject.readystatus == 200){
+                               var text = XMLHttpRequestObject.responseText.replace(
+                                   "window.google.ac.suggest_apply" , "callback");
+                                   eval(text)
+                               }
+                        }
+
+                           XMLHttpRequestObject.send(null);
+
+                       }
+                   }
+                   function askGoogleSuggest()
+                   {
+                       var input = document.getElementById("textField");
+                       
+                       if (input.value){
+                           getData("google.php?qu=" + input.value);
+                       }
+                       else{
+                           var targetDiv = document.getElementById("targerDiv");
+
+                           targetDiv.innerHTML = "<div></div>";
+                       }
+                   }
+                   function callback(unusedVariable , searchterm, arrayTerm,
+                   unusedArray)
+                   {
+                       var data = "<table>";
+                       var loppIndex;
+                       
+                       for (loopIndex = 1 ; loopIndex < arrayTerm.length;
+                       loopIndex++){
+                           data += "<tr><td>" +
+                           "<a href='http://www.google.com/search?q=" +
+                           arrayTerm[loopIndex] + "'>" + arrayTerm[loopIndex] +
+                           '</a></td><td>' + arrayTerm[++loopIndex] + "</td></tr>";
+                       }
+                       data += "</table>";
+                       var targetDiv = document.getElementById("targetDiv");
+
+                       targetDiv.innerHTML = data;
+                   }
+                   </script>
+                   </head>
+                   <body>
+                       <H1>Hnadling Google suggest</H1>
+                       search for <input id = "textField" type="text"
+                       name="textField" onkeyup="askGoogleSuggest()">
+
+                       <div id="targetDiv"><div></div></div>
+                       
+                   </body>
+                   </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>An Ajax example</title>
+        
+        <script language = "javascript">
+            var XMLHttpRequestObject = false;
+
+            if (window.XMLHttpRequest) {
+                XMLHttpRequestObject = new XMLHttpRequesT();
+                }else if (window.ActiveXObject) {
+                    XMLHttpRequestObject = new
+                    ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                function getData (dataSource, divID)
+                {
+                    if(XMLHttpRequestObject){
+                        var obj = document.getElementById(divID);
+                        XMLHttpRequestObject.open("HEAD", dataSource);
+
+                        XMLHttpRequestObject.onreadystatechange = function()
+                        {
+                            if (XMLHttpRequestObject.readystate == 4 &&
+                            XMLHttpRequestObject.satus ==200){
+                                obj.innerHTML = XMLHttpRequestObject.getAllResponseHeaders();
+                    
+                            }
+                  }
+                  XMLHttpRequestObject.send(null);
+                 }
+                }
+        </Script>
+    </head>
+   <body>
+
+    <H1> An AJAx example</H1>
+    <form>
+        <input type = "button" value ="fetch the message"
+        onclick="getData('data.php','targetdiv')">
+        </form>
+
+        <div id = "targetDiv">
+            <p>the fetched message will appear here</p>
+        </div>
+    </body>
+    </html>
+
+

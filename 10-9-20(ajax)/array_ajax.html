@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>using an array of XMLHttpRequesT objects</title>
+        
+        <script language = "javascript">
+            var index = 0;
+
+            var XMLHttpRequestObjects = new Array() ;
+
+            function getData1 (dataSource, divID)
+            {
+
+            if (window.XMLHttpRequest) {
+                XMLHttpRequestObjects.push (new XMLHttpRequesT());
+                }else if (window.ActiveXObject) {
+                    XMLHttpRequestObjects.push(new ActiveXObject("Microsoft.XMLHTTP"));
+                }
+                
+                index = XMLHttpRequestObjects.length -1;
+
+                    if(XMLHttpRequestObject[index]){
+                        XMLHttpRequestObject[index].open("GET", dataSource);
+                        var obj = document.getElementById(divID);
+
+                        XMLHttpRequestObjects[index].onreadyatatechange = function()
+                        {
+                            if(XMLHttpRequestObjects[index].readyState == 4 &&
+                            XMLHttpRequestObjects[index].status == 200){
+                                obj.innerHTML = XMLHttpRequestObjects[index].responseText;
+                            }
+                        }
+
+                        XMLHttpRequestObjects[index].send(null);
+                    }
+            }
+
+            function getData2(dataSource,divID)
+            {
+                if(window.XMLHttpRequest){
+                    XMLHttpRequestObjects.push(new XMLHttpRequest());
+                } else if (window.ActiveXObject){
+                    XMLHttpRequestObjects.push (new ActiveXObject("Microsoft.XMLHTTP"));
+                }
+                index = XMLHttpRequestObjects.length-1;
+
+                if(XMLHttpRequestObjects[index]){
+                    XMLHttpRequestObjects[index].open("GET",dataSource);
+                    var obj = document.getElementById(divID);
+
+                    XMLHttpRequestObjects[index].onreadyatatechange = function()
+                    {
+                        if(XMLHttpRequestObjects[index].readyState == 4 &&
+                        XMLHttpRequestObjects[index].status == 200){
+                            obj.innerHTML = XMLHttpRequestObjects[index].responseText;
+                        }
+                    }
+                    XMLHttpRequestObjects[index].send(null);
+                }
+            }
+        </script>
+        </head>
+        <body>
+            <h1>using an array of XMLHttpRequest Objects</h1>
+            <form>
+             <input type="button" value="Fetch message 1"
+             onclick="getData1('dataresponder.php?data=1','targetDIV')">
+             <input type="button" value="Fetch message 2"
+             onclick="getData2('dataresponder.php?data=2','targetDiv')">
+            </form>
+
+            <div id= "targetDiv">
+                <p>the fetched will appear here</p>
+                </div>
+        </body>
+        </html>
+                        

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>two XMLHttpRequesT example</title>
+        
+        <script language = "javascript">
+            var XMLHttpRequestObject1 = false;
+
+            if (window.XMLHttpRequest) {
+                XMLHttpRequestObject1 = new XMLHttpRequesT();
+                }else if (window.ActiveXObject) {
+                    XMLHttpRequestObject1 = new
+                    ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var XMLHttpRequestObject2 = false;
+
+            if (window.XMLHttpRequest) {
+                XMLHttpRequestObject2 = new XMLHttpRequesT();
+                }else if (window.ActiveXObject) {
+                    XMLHttpRequestObject2 = new
+                    ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                function getData1 (dataSource, divID)
+                {
+                    if(XMLHttpRequestObject1){
+                        var obj = document.getElementById(divID);
+                        XMLHttpRequestObject1.open("GET", dataSource);
+
+                        XMLHttpRequestObject1.onreadystatechange = function()
+                        {
+                            if (XMLHttpRequestObject1.readystate == 4 &&
+                            XMLHttpRequestObject1.satus ==200){
+                                obj.innerHTML = XMLHttpRequestObject1.responseText;
+                    
+                            }
+                  }
+                  XMLHttpRequestObject1.send(null);
+                 }
+                }
+                function getData2 (dataSource, divID)
+                {
+                    if(XMLHttpRequestObject2){
+                        var obj = document.getElementById(divID);
+                        XMLHttpRequestObject2.open("GET", dataSource);
+
+                        XMLHttpRequestObject2.onreadystatechange = function()
+                        {
+                            if (XMLHttpRequestObject2.readystate == 4 &&
+                            XMLHttpRequestObject2.satus ==200){
+                                obj.innerHTML = XMLHttpRequestObject2.responseText;
+                    
+                            }
+                  }
+                  XMLHttpRequestObject2.send(null);
+                    }
+            }
+        </Script>
+    </head>
+   <body>
+
+    <H1> An AJAx example</H1>
+    <form>
+        <input type = "button" value ="fetch the message1"
+        onclick="getData1('data.php','targetdiv')">
+        <input type = "button" value ="fetch the message2"
+        onclick="getData2('data.php','targetdiv')">
+        </form>
+
+        <div id = "targetDiv">
+            <p>the fetched message will appear here</p>
+        </div>
+    </body>
+</html>

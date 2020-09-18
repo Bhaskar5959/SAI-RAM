@@ -1,0 +1,8 @@
+{
+    "name": "zip",
+    "version": "0.0.0",
+    "private": true,
+    "dependencies": {
+      "rxjs": "6.14.6"
+    }
+  }

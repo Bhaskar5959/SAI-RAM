@@ -1,0 +1,80 @@
+<h1>conditional statements in angular</h1>
+    <!--<h1 *ngIf="show=='no '; then ifBlock else elseBlock">
+    </h1>
+    <ng-template #ifBlock>
+      <h1>if block</h1>
+      </ng-template>
+    <ng-template #elseBlock>
+      <h1>else block</h1>
+      </ng-template>
+
+    <ng-template [ngIf]="show=='red'">
+      <h1>red block</h1>
+    </ng-template>
+    <ng-template [ngIf]="show=='green'">
+      <h1>green block</h1>
+    </ng-template>
+    <ng-template [ngIf]="show=='blue'">
+      <h1>blue block</h1>
+    </ng-template>-->
+<h2>switch case</h2>
+<div [ngSwitch]="colour">
+<h2 style="color: red;" *ngSwitchCase="'red'">
+  red color
+</h2>
+<h2 style="color:green;" *ngSwitchCase="'green'">
+ green color
+</h2>
+<h2 style="color:blue;" *ngSwitchCase="'blue'">
+  blue color
+</h2>
+<h2 style="color:yellow;" *ngSwitchCase="'yellow'">
+  yellow color
+</h2>
+<h2 style="color: gray;" *ngSwitchCaseDefault>
+ default color
+</h2>
+</div>
+<h3>for loop in angular</h3>
+<h4 *ngFor="let item of some">
+  {{item}}
+</h4>
+<table border="1">
+  <tr>
+    <td>name</td>
+    <td>age</td>
+  </tr>
+  <tr *ngFor="let item of data">
+    <td>{{item.name}}</td>
+    <td>{{item.age}}</td>
+  </tr>
+</table>
+
+<h4>forms</h4>
+<form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+  <input type="text" ngModel name="user" placeholder="enter user name">
+  <br>
+  <input type="text" ngModel name="age" placeholder="enter user age">
+  <br>
+  <input type="text" ngModel name="address" placeholder="enter user address">
+  <br>
+  <button>get user value</button>
+</form> 
+
+<h4>style binding</h4>
+<h4 style="color: red">heading1</h4>
+<h4 [style.color]="'green'">heading1</h4>
+<h4 [style.color]= "color">heading1</h4>
+<h4 [style.color]= "err?'red':'green'">conditional style</h4>
+<button (click)="updateColor()">update color</button>
+
+<h5>pipes</h5>
+<h5>{{name | uppercase}}</h5>
+<h5>{{name | titlecase}}</h5>
+<h5>{{today | date}}</h5>
+<h5>{{today | date:'fullDate'}}</h5>
+
+<h5>{{str | slice:2:8}}</h5>
+<h5>{{money | currency:'INR' }}</h5>
+<h5>{{money | currency:'USD' }}</h5>
+ 

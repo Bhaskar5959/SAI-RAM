@@ -1,0 +1,26 @@
+<h1>Angular interpolation</h1>
+<h1>{{myname}}</h1>
+<button (click)="getName(myname)">get my name</button>
+<h2>{{obj.name}}</h2>
+<h2>{{obj.age}}</h2>
+<h2>{{arr}}</h2>
+<h2>{{arr.length}}</h2>
+<h2>{{arr[1]}}</h2>
+<h2>{{siteUrl}}</h2>
+<h3>{{10+10}}</h3>
+<button (click)="myevent('this is click event')">click me</button>
+<br>
+<input type="text" #box (keydown)="myevent(box.value)">
+<br>
+<input type="text" #box (blur)="myevent('blur event')">
+
+<h1 (mouseover)="myevent('mouseover')" style="background-color:skyblue;">
+  mouse event
+  </h1>
+  <h1 (mouseleave)="myevent('mouseleave')" style="background-color:red;">
+    mouse event
+    </h1>
+
+    <input type="text" [value]="myname">
+<app-login></app-login>
+

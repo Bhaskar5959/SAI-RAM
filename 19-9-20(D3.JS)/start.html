@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d3 js</title>
+    <script src="https://d3js.org/d3.v6.min.js" defer></script>
+    <script src="https://d3js.org/d3-scale.v3.min.js" defer></script>
+    <style>
+        .container {
+            width: 250px;
+            height: 200px;
+            border:1px solid #9780ce;
+            
+        }
+        .bar{
+            fill: #9780ce;
+        }
+    </style>
+</head>
+<body>
+    
+    <svg></svg>
+<script>
+const dummy_data = [
+    {id: 'd1', value:10, region : 'USA'},
+    {id: 'd2', value:11, region : 'india'},
+    {id: 'd3', value:12, region : 'london'},
+    {id: 'd4', value:6, region : 'norway'},
+];
+
+const xScale = d3.scaleBand().domain(dummy_data.map((datapoint)=> data.point.region))
+.rangeRound([0,250]).padding(0.1);
+const yScale = d3.scaleLinear().domain([0, 15]).range([200, 0]);
+
+const container = d3.select('svg')
+ .classed('container',true);
+
+
+ const bar =container
+ .selectAll('.bar')
+ .data(dummy_data)
+.enter()
+.append('rect')
+.classed('bar',true)
+.attr('width',xScale.bandwidth())
+.attr('height',(data) => 200- yScale(data.value))
+.attr('x',data => xScale(data.region))
+.attr('y',data => yScale(data.value));
+
+</script>
+
+</body>
+</html>

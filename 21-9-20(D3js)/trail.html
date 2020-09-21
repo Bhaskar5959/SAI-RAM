@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v6.min.js" defer></script>
+    <script src="https://d3js.org/d3-scale.v3.min.js"></script>
+    <title>D3</title>
+</head>
+
+<body>
+    <script>
+
+        var dataArray = [20, 50, 30, 60];
+        var width = 500;
+        var height = 500;
+
+        var widthScale = d3.scaleLinear()
+            .domain([0, 60])
+            .range([0, width]);
+
+        var color = d3.scaleLinear()
+            .domain([0, 60])
+            .range(["red", "blue"]);
+
+        var axis = d3.svg.axis() 
+                    .ticks(5)
+                    .scale(widthScale);
+
+        var canvas = d3.select("body")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform","translate(20,0)")
+            .call(axis);
+
+        var bars = canvas.selectAll("rect")
+            .data(dataArray)
+            .enter()
+            .append("rect")
+            .attr("width", function (d) { return widthScale(d); })
+            .attr("height", 50)
+            .attr("fill", "red")
+            .attr("y", function (d, i) {
+                return i * 100;
+            });
+        canvas.append("g")
+            .attr("transform","translate(0,400)")
+            .call(axis);
+
+    </script>
+
+</body>
+
+</html>

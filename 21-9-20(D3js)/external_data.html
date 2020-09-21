@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v6.min.js" ></script>
+    <title>external</title>
+</head>
+<body>
+    <script>
+        d3.json("/mydata.json").then(function(data) {
+
+
+            var canvas = d3.select("body").append("svg")
+                        .attr("width",500)
+                        .attr("height",500)
+
+            canvas.selectAll("react")
+                        .data(data)
+                        .enter()
+                            .append("react")
+                            .attr("width", function(d) { return d.age *10;})
+                            .attr("height",50)
+                            .attr("y",function(d , i) { return i * 50 ;})
+                            .attr("fill","blue");
+            canvas.selectAll("text")
+                    .data(data)
+                    .enter()
+                        .append("text")
+                        .attr("fill","white")
+                        .attr("y",function(d,i) {return i*50 + 24 ;})
+                        .text(function(d){return d.name ;})
+            
+        });
+
+    </script>
+    
+</body>
+</html>

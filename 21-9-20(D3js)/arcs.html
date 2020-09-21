@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <title>arcs</title>
+    </head>
+
+<body>
+    <script>
+        var canvas = d3.select("body").append("svg")
+            .attr("width", 500)
+            .attr("height", 500);
+
+        var group = canvas.append("g")
+            .attr("transform", "translate(100,100)");
+
+        var r = 100;
+        var p = Math.PI * 2;
+
+        var arc = d3.arc()
+            .innerRadius(r - 20)
+            .outterRadius(r)
+            .startAngle(0)
+            .endAngle(p);
+
+        group.append("path")
+            .attr("d", arc);
+
+
+
+    </script>
+
+
+</body>
+
+</html>

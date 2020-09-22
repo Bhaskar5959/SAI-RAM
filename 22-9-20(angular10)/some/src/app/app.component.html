@@ -1,0 +1,13 @@
+<!--<h1>send data to parent to child component</h1>
+
+
+<h2>resuable component</h2>
+<div *ngFor ="let data of users">
+  <app-users [hero]="users"></app-users>
+</div>-->
+
+<h2>send data to child to parent component</h2>
+
+<app-users (parentFunction)="parentFunction($event)"></app-users>
+<br>
+<h3>{{name}}</h3>

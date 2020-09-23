@@ -1,0 +1,36 @@
+<h1>routing example</h1>
+
+<a href="user">user</a>
+<br>
+<a href="admin">admin</a>
+<br>
+<a href="about">about</a>
+<br>
+<a href="signup">signup</a>
+<br>
+<router-outlet></router-outlet>
+
+<h3>routing module</h3>
+<ul>
+  <li><a href="adven">adven</a></li>
+  <li><a href="venture">venture</a></li>
+</ul>
+
+<router-outlet></router-outlet>
+
+<h2>show list of api data</h2>
+<table border="1">
+  <tr>
+    <td>id</td>
+    <td>title</td>
+    <td>user id</td>
+    <td>completed</td>
+  </tr>
+  <tr *ngFor= "let item of data">
+    <td>{{item.id}}</td>
+    <td>{{item.title}}</td>
+    <td>{{item.userId}}</td>
+    <td>{{item.completed}}</td>
+  </tr>
+</table>
+

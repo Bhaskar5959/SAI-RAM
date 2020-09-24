@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>crud</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+  <link rel="stylesheet" type="text/css "href="photon.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="mainWrapper">
+    <h1>CRUD FILE</h1>
+    <form>
+      <div class="form-group">
+        <label>File Name</label>
+        <input id="filename" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Contents</label>
+        <textarea id="filecontents" class="form-control" rows="5"></textarea>
+      </div>
+    </form>
+    <button id="btncreate" class="btn btn-default">create</button>
+    <button id="btnread" class="btn btn-default">read</button>
+    <button id="btndelete" class="btn btn-default">delete</button>
+  </div>
+  <script>
+    require('./index.js')
+  </script>
+
+</body>
+
+</html>

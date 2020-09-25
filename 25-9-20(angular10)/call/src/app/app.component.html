@@ -1,0 +1,18 @@
+<h1> add material </h1>
+<button mat-button color ="primary">angular mat button</button>
+<button mat-flat-button color="primary">Primary</button>
+    <button mat-flat-button color="accent">Accent</button>
+    <button mat-flat-button color="warn">Warn</button>
+    <button mat-flat-button disabled>Disabled</button>
+<mat-slider ></mat-slider>
+<mat-slider step="4" tickInterval="3"></mat-slider>
+<h1>Reactive Forms</h1>
+
+<nav>
+  <a (click)="toggleEditor('name')">Name Editor</a>
+  <a (click)="toggleEditor('profile')">Profile Editor</a>
+</nav>
+
+<app-name-editor *ngIf="showNameEditor"></app-name-editor>
+
+<app-profile-editor *ngIf="showProfileEditor"></app-profile-editor>
